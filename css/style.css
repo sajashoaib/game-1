@@ -1,0 +1,430 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+/*************************** style for index page **********************************/
+
+.gameBackground,
+.questins-bg {
+  height: 100vh;
+  background-image: url("/image/bg-8.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.nav {
+  height: 90px;
+}
+
+.logo {
+  width: 90%;
+  height: 40vh;
+  margin-bottom: 20px;
+  animation: move 2s ease-in-out infinite;
+}
+.logo-nav {
+  width: 160px;
+  height: 140px;
+  padding: 30px 20px;
+  animation: move 2s ease-in-out infinite;
+}
+
+.play-button,
+.question-btn {
+  font-family: "Playwrite DE Grund", cursive;
+  background-color: #7765c0;
+  color: white;
+  font-size: 2.2rem;
+  border-radius: 15px;
+  border-top: 8px solid white;
+  border-left: 8px solid white;
+  text-decoration: none;
+  box-shadow: rgb(38, 57, 77) -16px -8px 30px -10px;
+  transition: all 0.3s ease;
+  font-weight: 900;
+  font-size: 70px;
+  padding: 5px 30px;
+}
+
+.play-button:hover {
+  transform: scale(1.05);
+  color: white;
+}
+
+.play-button:active {
+  transform: scale(1.02);
+  box-shadow: rgb(38, 57, 77) -16px -8px 30px -10px;
+}
+
+/* ****************************** style for exit page ******************************** */
+.questins-container .score {
+  font-size: 60px;
+}
+.question-btn {
+  font-size: 40px;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#question-btn1:hover,
+#question-btn2:hover {
+  color: white;
+  transform: scale(1.05);
+}
+#question-btn1:active,
+#question-btn2:hover {
+  transform: scale(1.02);
+  box-shadow: rgb(38, 57, 77) -16px -8px 30px -10px;
+}
+
+/* ******************************** shared styles between pages ***********************************************/
+.page-2 {
+  position: relative; /* تأكد من أن القسم هو العنصر المرجعي */
+}
+
+#startOverlay {
+  position: absolute; /* يجعلها داخل القسم */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent; /* خلفية شفافة */
+  display: flex; /* إذا كنت ترغب في توسيط المحتوى */
+  justify-content: center;
+  align-items: center;
+  z-index: 10; /* تأكد من أن الـ overlay فوق المحتويات الأخرى */
+}
+
+#startOverlay.hidden {
+  display: none;
+}
+
+.confetti {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 500px;
+  display: none;
+  animation: confettiAnimation 4s forwards;
+  pointer-events: none;
+}
+
+.frame1,
+.frame2 {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  transform: translateX(-200%);
+  clip-path: polygon(0 0, 100% 0, 75% 50%, 100% 100%, 0 100%);
+  z-index: 9999;
+  top: 0; /* تأكد من أنها تبدأ من أعلى */
+  left: 0;
+}
+.animate-frame {
+  animation: frame 1s linear forwards;
+}
+
+.frame1 {
+  background-color: #7765c0;
+  animation-delay: 0.25s;
+}
+
+.frame2 {
+  background-color: #ea5455;
+  animation-delay: 0.5s;
+}
+/* ************************************ styles for question-one page ************************************************* */
+
+.each-questions-one-container,
+.each-questions-two-container {
+  background-image: url(/image/bg-8.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.what-are-you-doing-text {
+  font-family: "Roboto", cursive;
+  font-size: 60px;
+  font-weight: 800;
+  color: white;
+  -webkit-text-stroke: 3px #7765c0;
+}
+.score {
+  font-family: "Roboto", cursive;
+  font-size: 40px;
+  font-weight: 800;
+  color: white;
+  -webkit-text-stroke: 3px #7765c0;
+}
+
+#image-container {
+  position: relative;
+}
+
+#quiz-image {
+  width: 100%;
+  height: 350px;
+}
+
+.img-question {
+  max-height: 80vh;
+  max-width: 400px;
+  object-fit: contain;
+  animation: moveing 2s ease-in-out infinite;
+}
+
+#image-container {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+.option-btns {
+  margin: 20px 0;
+}
+
+.option {
+  font-family: "Playwrite DE Grund", cursive;
+  background-color: white;
+  color: #7765c0;
+  font-size: 2.5rem;
+  border-radius: 15px;
+  border-top: 8px solid #7765c0;
+  border-left: 8px solid #7765c0;
+  border-bottom: none;
+  border-right: none;
+  text-decoration: none;
+  box-shadow: rgb(38, 57, 77) -16px -8px 30px -10px;
+  transition: all 0.3s ease;
+  font-weight: 900;
+  font-size: 30px;
+  padding: 5px 20px;
+}
+
+.option:hover {
+  box-shadow: none;
+}
+/* *******************************************styles for question-two page *********************************************** */
+
+.images-q2 {
+  width: 100%;
+  height: 200px;
+  cursor: pointer;
+}
+.images-q2 img:first-child,
+.images-q2 img:nth-child(3) {
+  width: 250px;
+}
+
+.images-q2 img {
+  width: 350px;
+}
+.images-q2 img:hover {
+  animation: move 2s ease-in-out infinite;
+}
+.answers {
+  margin-top: 20px;
+}
+.answer {
+  width: 200px;
+  height: 60px;
+  background-color: white;
+  border-radius: 100px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  cursor: pointer;
+}
+
+.answer:hover {
+  border: 4px solid #7765c0;
+  transition: 0.3s ease;
+}
+.answer-text {
+  margin: 50px auto;
+  background-color: white;
+  width: 40%;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.answer-text p {
+  font-family: "Playwrite DE Grund", cursive;
+  font-size: 40px;
+  color: #7765c0;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 7px 10px;
+  transition: font-size 0.3s;
+}
+
+.btn-listen h2 {
+  font-size: 50px;
+}
+
+.answer.correct {
+  background-color: green;
+  pointer-events: none;
+}
+
+.answer p.correct-word {
+  font-size: 24px;
+}
+
+/* ******************************* animations ******************************************* */
+
+@keyframes frame {
+  0% {
+    transform: translateX(-200%);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      75% 50%,
+      100% 100%,
+      0 100%
+    ); /* Arrow shape */
+  }
+  100% {
+    transform: translateX(100%);
+    clip-path: polygon(0 0, 100% 0, 75% 50%, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Move up */
+  }
+  100% {
+    transform: translateY(0); /* Move back down */
+  }
+}
+
+@keyframes confettiAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  50% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+@keyframes moveing {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px); /* Move up */
+  }
+  100% {
+    transform: translateY(0); /* Move back down */
+  }
+}
+/* ******************************************************************************************************* */
+.section {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.section.active {
+  display: block;
+}
+
+/* ************************************************************************* */
+@media (max-width: 767px) {
+  .logo {
+    width: 80%;
+    height: 20vh;
+    margin-bottom: 20px;
+    animation: move 2s ease-in-out infinite;
+  }
+  .play-button {
+    font-size: 30px;
+  }
+  .frame1,
+  .frame2 {
+    clip-path: polygon(0 0, 100% 0, 85% 50%, 100% 100%, 0 100%);
+  }
+  .what-are-you-doing-text {
+    font-size: 32px;
+    margin-top: 20px;
+  }
+  .logo-nav {
+    width: 160px;
+    height: 140px;
+    padding: 30px 20px;
+    animation: move 2s ease-in-out infinite;
+  }
+
+  .img-question {
+    max-height: 50vh;
+    max-width: 400px;
+  }
+  .option {
+    font-size: 15px;
+    padding: 5px 10px;
+  }
+  .option-btns {
+    margin: 30px 0;
+  }
+  .score {
+    font-size: 30px;
+  }
+  .confetti {
+    width: 80%;
+    height: 250px;
+  }
+  #dragtext {
+    font-size: 30px;
+    text-align: center;
+  }
+  .images-q2 img {
+    width: 150px;
+  }
+  .images-q2 img:first-child,
+  .images-q2 img:nth-child(3) {
+    width: 150px;
+  }
+  .answer {
+    width: 100px;
+    height: 30px;
+  }
+  .answer-text p {
+    font-size: 20px;
+
+    padding: 7px 10px;
+    transition: font-size 0.3s;
+  }
+  .answer-text {
+    width: 70%;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+}
