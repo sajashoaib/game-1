@@ -11,7 +11,7 @@ body {
 .gameBackground,
 .questins-bg {
   height: 100vh;
-  background-image: url("/image/bg-8.jpg");
+  background-image: url("../image/bg-8.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -166,10 +166,6 @@ body {
   -webkit-text-stroke: 3px #7765c0;
 }
 
-#image-container {
-  position: relative;
-}
-
 #quiz-image {
   width: 100%;
   height: 350px;
@@ -190,6 +186,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 30px 0;
+  position: relative;
 }
 .option-btns {
   margin: 20px 0;
@@ -236,9 +233,10 @@ body {
 }
 .answers {
   margin-top: 20px;
+  margin-bottom: 70px;
 }
 .answer {
-  width: 200px;
+  width: 260px;
   height: 60px;
   background-color: white;
   border-radius: 100px;
@@ -257,13 +255,16 @@ body {
   border-radius: 50px;
   cursor: pointer;
 }
-.answer-text p {
+/* .answer-text p {
+
+} */
+.word {
   font-family: "Playwrite DE Grund", cursive;
   font-size: 40px;
   color: #7765c0;
   font-weight: 600;
   margin-bottom: 0;
-  padding: 7px 10px;
+  padding: 0px 10px;
   transition: font-size 0.3s;
 }
 
@@ -361,7 +362,7 @@ body {
 @media (max-width: 767px) {
   .logo {
     width: 80%;
-    height: 20vh;
+    height: 30vh;
     margin-bottom: 20px;
     animation: move 2s ease-in-out infinite;
   }
@@ -375,6 +376,8 @@ body {
   .what-are-you-doing-text {
     font-size: 32px;
     margin-top: 20px;
+    color: #7765c0;
+    -webkit-text-stroke: 3px transparent;
   }
   .logo-nav {
     width: 160px;
@@ -396,6 +399,8 @@ body {
   }
   .score {
     font-size: 30px;
+    color: #7765c0;
+    -webkit-text-stroke: 3px transparent;
   }
   .confetti {
     width: 80%;
@@ -413,18 +418,26 @@ body {
     width: 150px;
   }
   .answer {
-    width: 100px;
+    width: 120px;
     height: 30px;
   }
-  .answer-text p {
+  .word {
     font-size: 20px;
-
-    padding: 7px 10px;
+    padding: 0px 10px;
     transition: font-size 0.3s;
+    text-align: center;
   }
   .answer-text {
     width: 70%;
     border-radius: 50px;
     cursor: pointer;
   }
+}
+
+#home {
+  display: none;
+}
+#page-2,
+#page-3 {
+  display: none; 
 }

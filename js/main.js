@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const frame2 = document.querySelector(".frame2");
   const englishdragaudio = document.getElementById("englishdragaudio");
   const arbicdragaudio = document.getElementById("arbicdragaudio");
+  var homeSection = document.getElementById("home");
+
   const events = [
     "click",
     "mousemove",
@@ -53,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         whatDoing.muted = false; // Unmute
         playSoundTwice(whatDoing); // Play the sound twice as needed
       }
+
       if (id === "page-3") {
         playAudioSequence(); // تشغيل الصوتين عند دخول الصفحة 3
       }
@@ -75,10 +78,15 @@ document.addEventListener("DOMContentLoaded", function () {
         buttonAudio.muted = false;
         buttonAudio.play();
       }
-
-      // إضافة كلاس لتفعيل الأنيميشن
+      setTimeout(() => {
+        if (homeSection) {
+          homeSection.style.transition = "opacity 0.5s ease"; // إضافة تأثير الانتقال
+          homeSection.style.opacity = "0"; // تقليل الشفافية تدريجيًا
+        }
+      }, 800); // نصف 1.6 ثانية
       document.querySelector(".frame1").classList.add("animate-frame");
       document.querySelector(".frame2").classList.add("animate-frame");
+      homeSection.style.display = "none"; // إخفاء سكشن home مباشرة قبل الانتقال
 
       setTimeout(() => {
         showSection("page-2"); // الانتقال إلى section page-2 بعد 1.6 ثانية
@@ -130,107 +138,111 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const quizData = [
     {
-      image: "/image/boy-writing.png",
+      image: "./image/boy-writing.png",
       correctOption: 1,
-      sound: "/voices/what are you doing.mp3",
+      sound: "./voices/whatdoing.mp3",
       options: ["doing my homework", "Watching TV"],
       sounds: [
         [
-          "/voices/doing my homework.mp3",
-          "/voices/good.mp3",
-          "/voices/أحسنت.mp3",
+          "./voices/doing my homework.mp3",
+          "./voices/good.mp3",
+          "./voices/أحسنت.mp3",
         ],
         [
-          "/voices/i am watching tv.mp3",
-          "/voices/wrong, try again.mp3",
-          "/voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/i am watching tv.mp3",
+          "./voices/wrong, try again.mp3",
+          "./voices/خطأ حاول مرة اخرى.mp3",
         ],
       ],
     },
     {
-      image: "/image/tv.png",
+      image: "./image/tv.png",
       correctOption: 2,
-      sound: "/voices/what are you doing.mp3",
+      sound: "./voices/whatdoing.mp3",
       options: ["playing football", "Watching TV"],
       sounds: [
         [
-          "/voices/i am playing football.mp3",
-          "/voices/wrong, try again.mp3",
-          "/voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/i am playing football.mp3",
+          "./voices/wrong, try again.mp3",
+          "./voices/خطأ حاول مرة اخرى.mp3",
         ],
         [
-          "/voices/i am watching tv.mp3",
-          "/voices/Excellent.mp3",
-          "/voices/ممتاز.mp3",
+          "./voices/i am watching tv.mp3",
+          "./voices/Excellent.mp3",
+          "./voices/ممتاز.mp3",
         ],
       ],
     },
     {
-      image: "/image/snacks.png",
+      image: "./image/snacks.png",
       correctOption: 1,
-      sound: "/voices/what are you doing.mp3",
+      sound: "./voices/whatdoing.mp3",
       options: ["eating snaks", "doing my homework"],
       sounds: [
         [
-          "/voices/i am eating snaks.mp3",
-          "/voices/brillient.mp3",
-          "/voices/مبهر.mp3",
+          "./voices/i am eating snaks.mp3",
+          "./voices/brillient.mp3",
+          "./voices/مبهر.mp3",
         ],
         [
-          "/voices/doing my homework.mp3",
-          "/voices/wrong, try again.mp3",
-          "/voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/doing my homework.mp3",
+          "./voices/wrong, try again.mp3",
+          "./voices/خطأ حاول مرة اخرى.mp3",
         ],
       ],
     },
     {
-      image: "/image/karate.png",
+      image: "./image/karate.png",
       correctOption: 2,
-      sound: "/voices/what are you doing.mp3",
+      sound: "./voices/whatdoing.mp3",
       options: ["doing my homework", "doing Karate"],
       sounds: [
         [
-          "/voices/doing my homework.mp3",
-          "/voices/wrong, try again.mp3",
-          "/voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/doing my homework.mp3",
+          "./voices/wrong, try again.mp3",
+          "./voices/خطأ حاول مرة اخرى.mp3",
         ],
 
-        ["/voices/doing karate.mp3", "/voices/great.mp3", "/voices/رائع.mp3"],
+        [
+          "./voices/doing karate.mp3",
+          "./voices/great.mp3",
+          "./voices/رائع.mp3",
+        ],
       ],
     },
     {
-      image: "/image/boy-playing-footbal.png",
+      image: "./image/boy-playing-footbal.png",
       correctOption: 1,
-      sound: "/voices/what are you doing.mp3",
+      sound: "./voices/whatdoing.mp3",
       options: ["playing Football", "eating Snaks"],
       sounds: [
         [
-          "/voices/i am playing football.mp3",
-          "/voices/Awesome.mp3",
-          "/voices/مذهل.mp3",
+          "./voices/i am playing football.mp3",
+          "./voices/Awesome.mp3",
+          "./voices/مذهل.mp3",
         ],
         [
-          "/voices/i am eating snaks.mp3",
-          "/voices/wrong, try again.mp3",
-          "/voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/i am eating snaks.mp3",
+          "./voices/wrong, try again.mp3",
+          "./voices/خطأ حاول مرة اخرى.mp3",
         ],
       ],
     },
     {
-      image: "/image/computergame.png",
+      image: "./image/computergame.png",
       correctOption: 2,
-      sound: "/voices/what are you doing.mp3",
+      sound: "./voices/whatdoing.mp3",
       options: ["doing Karate", "Playing computer games"],
       sounds: [
         [
-          "/voices/doing karate.mp3",
-          "/voices/wrong, try again.mp3",
-          "/voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/doing karate.mp3",
+          "./voices/wrong, try again.mp3",
+          "./voices/خطأ حاول مرة اخرى.mp3",
         ],
         [
-          "/voices/i am playing computer game.mp3",
-          "/voices/good.mp3",
-          "/voices/أحسنت.mp3",
+          "./voices/i am playing computer game.mp3",
+          "./voices/good.mp3",
+          "./voices/أحسنت.mp3",
         ],
       ],
     },
@@ -281,12 +293,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (quizImage) {
         quizImage.src = currentData.image;
       }
+      console.log(quizData[currentQuestion].image);
+
       if (option1 && option2) {
         option1.innerText = currentData.options[0]; // First option
         option2.innerText = currentData.options[1];
       }
       if (whatDoing) {
-        whatDoing.src = "/voices/whatdoing.mp3"; // Ensure audio source is set
+        whatDoing.src = "./voices/whatdoing.mp3"; // Ensure audio source is set
         whatDoing.load(); // Ensure the audio is loaded
       }
 
@@ -317,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Ensure the audio source is ready
       if (whatDoing) {
-        whatDoing.src = "/voices/whatdoing.mp3";
+        whatDoing.src = "./voices/whatdoing.mp3";
         whatDoing.load(); // Ensure the audio is loaded
       }
 
@@ -430,12 +444,12 @@ document.addEventListener("DOMContentLoaded", function () {
         tryAgainSound.onended = function () {
           // After "Try Again" sound finishes, play the Arabic phrase "حاول مرة اخرى"
           const arabicTryAgainSound = new Audio(
-            "/voices/خطأ حاول مرة اخرى.mp3"
+            "./voices/خطأ حاول مرة اخرى.mp3"
           ); // Path to the "حاول مرة اخرى" sound
           arabicTryAgainSound.play();
           arabicTryAgainSound.onended = function () {
             // Play "What are you doing?" question sound twice after the wrong answer feedback
-            const whatDoingAudio = new Audio("/voices/whatdoing.mp3");
+            const whatDoingAudio = new Audio("./voices/whatdoing.mp3");
             playSoundTwice(whatDoingAudio); // Play the question twice
           };
         };
@@ -508,8 +522,9 @@ function drop(event) {
     event.target.style.backgroundColor = "lightgreen"; // Change background color to light green
     event.target.style.pointerEvents = "none"; // Make the box unclickable
     event.target.style.textAlign = "center"; // Center text
-    event.target.style.fontSize = "20px"; // Change font size as needed
+    // event.target.style.fontSize = "20px"; // Change font size as needed
     event.target.style.color = "white"; // Change font color as needed
+    event.target.classList.add("word"); // إضافة الفئة لتطبيق أنماط CSS
 
     playCorrectAnswerSounds(draggedElement.id); // Play correct answer sounds
 
@@ -639,22 +654,22 @@ function isCorrectAnswer(draggedId, targetId) {
 function playCorrectAnswerSounds(draggedId) {
   const correctSounds = {
     "word-1": [
-      "/voices/speaking.mp3",
-      "/voices/good.mp3", // Good sound
-      "/voices/أحسنت.mp3", // احسنت sound
-      "/voices/Happy Kids Sound Effect.mp3", // Clapping sound
+      "./voices/speaking.mp3",
+      "./voices/good.mp3", // Good sound
+      "./voices/أحسنت.mp3", // احسنت sound
+      "./voices/Happy Kids Sound Effect.mp3", // Clapping sound
     ],
     "word-2": [
-      "/voices/ring.mp3",
-      "/voices/Excellent.mp3", // Brilliant sound
-      "/voices/ممتاز.mp3", // ممتاز sound
-      "/voices/Happy Kids Sound Effect.mp3", // Clapping sound
+      "./voices/ring.mp3",
+      "./voices/Excellent.mp3", // Brilliant sound
+      "./voices/ممتاز.mp3", // ممتاز sound
+      "./voices/Happy Kids Sound Effect.mp3", // Clapping sound
     ],
     "word-3": [
-      "/voices/wing.mp3",
-      "/voices/brillient.mp3", // Excellent sound
-      "/voices/مذهل.mp3", // مذهل sound
-      "/voices/Happy Kids Sound Effect.mp3", // Clapping sound
+      "./voices/wing.mp3",
+      "./voices/brillient.mp3", // Excellent sound
+      "./voices/مذهل.mp3", // مذهل sound
+      "./voices/Happy Kids Sound Effect.mp3", // Clapping sound
     ],
   };
 
@@ -666,9 +681,9 @@ function playCorrectAnswerSounds(draggedId) {
 // Function to play incorrect answer sounds
 function playIncorrectAnswerSounds() {
   const incorrectSounds = [
-    "/voices/wrong, try again.mp3", // Try again sound
-    "/voices/خطأ حاول مرة اخرى.mp3",
-    "/voices/drag the correct word.mp3", // حاول مرة اخرى sound
+    "./voices/wrong, try again.mp3", // Try again sound
+    "./voices/خطأ حاول مرة اخرى.mp3",
+    "./voices/drag the correct word.mp3", // حاول مرة اخرى sound
   ];
 
   playSounds(incorrectSounds);
