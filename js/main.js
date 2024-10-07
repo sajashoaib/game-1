@@ -16,19 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const arbicdragaudio = document.getElementById("arbicdragaudio");
   var homeSection = document.getElementById("home");
 
-  const events = [
-    "click",
-    "mousemove",
-    "mousedown",
-    "keydown",
-    "touchstart",
-    "scroll",
-    "resize",
-  ];
+
   let currentQuestion = 0;
   let answeredCorrectly = false;
   let score = 0;
-  let isFirstQuestion = true; // Track if it's the first question
+  let isFirstQuestion = true;
   let hasVisitedPage2 = false;
 
   // ****************************************************************************
@@ -67,13 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
     startBtn.addEventListener("click", function (event) {
       event.preventDefault();
 
-      // إضافة تأثير الضغط على الزر
       startBtn.style.transform = "scale(0.95)";
       setTimeout(() => {
         startBtn.style.transform = "scale(1)";
       }, 300);
 
-      // تشغيل الصوت عند الضغط
       if (buttonAudio) {
         buttonAudio.muted = false;
         buttonAudio.play();
@@ -83,13 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
           homeSection.style.transition = "opacity 0.5s ease"; // إضافة تأثير الانتقال
           homeSection.style.opacity = "0"; // تقليل الشفافية تدريجيًا
         }
-      }, 800); // نصف 1.6 ثانية
+      }, 800); 
       document.querySelector(".frame1").classList.add("animate-frame");
       document.querySelector(".frame2").classList.add("animate-frame");
-      homeSection.style.display = "none"; // إخفاء سكشن home مباشرة قبل الانتقال
-
+      homeSection.style.display = "none";
       setTimeout(() => {
-        showSection("page-2"); // الانتقال إلى section page-2 بعد 1.6 ثانية
+        showSection("page-2");
       }, 1600);
     });
   }
@@ -98,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (levelOne) {
     levelOne.addEventListener("click", (event) => {
-      event.preventDefault(); // Prevent the default anchor click behavior
+      event.preventDefault(); 
       resetGame();
       // Remove the animation classes
       frame1.classList.remove("animate-frame");
@@ -108,16 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => {
         frame1.classList.add("animate-frame");
         frame2.classList.add("animate-frame");
-        // resetAllScores();
-        currentQuestion = 0; // تأكد من ضبط المتغير على 0
-        score = 0; // إعادة تعيين النقاط
-        updateScore(); // تحديث عرض النقاط
+        currentQuestion = 0; 
+        score = 0; 
+        updateScore(); 
         loadQuestion();
 
-        // Delay the redirect until after the animation
         setTimeout(() => {
-          showSection("page-2"); // Redirect after animation completes
-        }, 1500); // Adjust the delay as needed to match the animation duration
+          showSection("page-2"); 
+        }, 1500); 
       }, 100);
     });
   }
@@ -125,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (startOverlay) {
     startOverlay.addEventListener("click", function () {
       if (whatDoing && !whatDoing.playing) {
-        // Ensure it's not already playing
         whatDoing.muted = false;
         playSoundTwice(whatDoing);
       }
@@ -144,14 +130,14 @@ document.addEventListener("DOMContentLoaded", function () {
       options: ["doing my homework", "Watching TV"],
       sounds: [
         [
-          "./voices/doing my homework.mp3",
+          "./voices/doing_my_homework.mp3",
           "./voices/good.mp3",
-          "./voices/أحسنت.mp3",
+          "./voices/arabic_good.mp3",
         ],
         [
-          "./voices/i am watching tv.mp3",
-          "./voices/wrong, try again.mp3",
-          "./voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/i_am_watching_tv.mp3",
+          "./voices/wrong_try_again.mp3",
+          "./voices/arabic_try_again.mp3",
         ],
       ],
     },
@@ -162,14 +148,14 @@ document.addEventListener("DOMContentLoaded", function () {
       options: ["playing football", "Watching TV"],
       sounds: [
         [
-          "./voices/i am playing football.mp3",
-          "./voices/wrong, try again.mp3",
-          "./voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/i_am_playing_football.mp3",
+          "./voices/wrong_try_again.mp3",
+          "./voices/arabic_try_again.mp3",
         ],
         [
-          "./voices/i am watching tv.mp3",
+          "./voices/i_am_watching_tv.mp3",
           "./voices/Excellent.mp3",
-          "./voices/ممتاز.mp3",
+          "./voices/arabic_excllent.mp3",
         ],
       ],
     },
@@ -180,14 +166,14 @@ document.addEventListener("DOMContentLoaded", function () {
       options: ["eating snaks", "doing my homework"],
       sounds: [
         [
-          "./voices/i am eating snaks.mp3",
+          "./voices/i_am_eatin_snaks.mp3",
           "./voices/brillient.mp3",
-          "./voices/مبهر.mp3",
+          "./voices/arabic-brillient.mp3",
         ],
         [
-          "./voices/doing my homework.mp3",
-          "./voices/wrong, try again.mp3",
-          "./voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/doing_my_homework.mp3",
+          "./voices/wrong_try_again.mp3",
+          "./voices/arabic_try_again.mp3",
         ],
       ],
     },
@@ -198,15 +184,15 @@ document.addEventListener("DOMContentLoaded", function () {
       options: ["doing my homework", "doing Karate"],
       sounds: [
         [
-          "./voices/doing my homework.mp3",
-          "./voices/wrong, try again.mp3",
-          "./voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/doing_my_homework.mp3",
+          "./voices/wrong_try_again.mp3",
+          "./voices/arabic_try_again.mp3",
         ],
 
         [
-          "./voices/doing karate.mp3",
+          "./voices/doing_karate.mp3",
           "./voices/great.mp3",
-          "./voices/رائع.mp3",
+          "./voices/arabic_great.mp3",
         ],
       ],
     },
@@ -217,14 +203,14 @@ document.addEventListener("DOMContentLoaded", function () {
       options: ["playing Football", "eating Snaks"],
       sounds: [
         [
-          "./voices/i am playing football.mp3",
+          "./voices/i_am_playing_football.mp3",
           "./voices/Awesome.mp3",
-          "./voices/مذهل.mp3",
+          "./voices/arabic_awosme.mp3",
         ],
         [
-          "./voices/i am eating snaks.mp3",
-          "./voices/wrong, try again.mp3",
-          "./voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/i_am_eatin_snaks.mp3",
+          "./voices/wrong_try_again.mp3",
+          "./voices/arabic_try_again.mp3",
         ],
       ],
     },
@@ -235,14 +221,14 @@ document.addEventListener("DOMContentLoaded", function () {
       options: ["doing Karate", "Playing computer games"],
       sounds: [
         [
-          "./voices/doing karate.mp3",
-          "./voices/wrong, try again.mp3",
-          "./voices/خطأ حاول مرة اخرى.mp3",
+          "./voices/doing_karate.mp3",
+          "./voices/wrong_try_again.mp3",
+          "./voices/arabic_try_again.mp3",
         ],
         [
-          "./voices/i am playing computer game.mp3",
+          "../voices/i_am_playing_computer_game.mp3",
           "./voices/good.mp3",
-          "./voices/أحسنت.mp3",
+          "./voices/arabic_good.mp3",
         ],
       ],
     },
@@ -267,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to play sound twice
   function playSoundTwice(audioElement, delay = 500) {
     let playCount = 0;
-    audioElement.play(); // Play first time
+    audioElement.play();
 
     // After the audio ends, play it again
     audioElement.onended = function () {
@@ -275,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (playCount < 2) {
         setTimeout(() => {
           audioElement.play(); // Play the second time
-        }, delay); // Delay between plays (if needed)
+        }, delay); // Delay between plays 
       }
     };
   }
@@ -296,23 +282,23 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(quizData[currentQuestion].image);
 
       if (option1 && option2) {
-        option1.innerText = currentData.options[0]; // First option
+        option1.innerText = currentData.options[0]; 
         option2.innerText = currentData.options[1];
       }
       if (whatDoing) {
-        whatDoing.src = "./voices/whatdoing.mp3"; // Ensure audio source is set
+        whatDoing.src = "./voices/whatdoing.mp3"; 
         whatDoing.load(); // Ensure the audio is loaded
       }
 
-      startOverlay.style.display = "block"; // Show the overlay initially
+      startOverlay.style.display = "block"; 
 
       // Add event listener to the overlay to play sound after clicking it
       startOverlay.addEventListener("click", () => {
-        startOverlay.style.display = "none"; // Hide the overlay after clicking
+        startOverlay.style.display = "none";
 
         setTimeout(() => {
           if (whatDoing) {
-            whatDoing.muted = false; // Unmute in case it's muted
+            whatDoing.muted = false; 
             whatDoing.play(); // Play the audio after clicking overlay
           }
         }, 500); // Small delay to ensure everything is ready before playing
@@ -320,7 +306,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       isFirstQuestion = false; // After the first question, normal flow resumes
     } else {
-      // Normal flow with animation for subsequent questions
       startOverlay.style.display = "block";
 
       // Load the new content but don't apply it yet
@@ -329,7 +314,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const newOption1Text = currentData.options[0];
       const newOption2Text = currentData.options[1];
 
-      // Ensure the audio source is ready
       if (whatDoing) {
         whatDoing.src = "./voices/whatdoing.mp3";
         whatDoing.load(); // Ensure the audio is loaded
@@ -339,7 +323,6 @@ document.addEventListener("DOMContentLoaded", function () {
       frame1.classList.remove("animate-frame");
       frame2.classList.remove("animate-frame");
 
-      // Reapply the animation classes to start animation without clearing the old content
       setTimeout(() => {
         frame1.classList.add("animate-frame");
         frame2.classList.add("animate-frame");
@@ -348,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
           // Update content after animation completes
           if (quizImage) {
-            quizImage.src = newImageSrc; // Update the image after animation
+            quizImage.src = newImageSrc; 
           }
           if (option1 && option2) {
             option1.innerText = newOption1Text; // Update the first option
@@ -360,8 +343,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // Play the "What are you doing?" voice twice for all subsequent questions
           setTimeout(() => {
             if (whatDoing) {
-              whatDoing.muted = false; // Unmute in case it's muted
-              playSoundTwice(whatDoing); // Play the audio twice
+              whatDoing.muted = false; 
+              playSoundTwice(whatDoing);
             }
           }, 1500); // Slight delay to ensure everything is ready before playing
         }, 500); // Delay for 500ms to match the animation
@@ -388,9 +371,9 @@ document.addEventListener("DOMContentLoaded", function () {
       sound.play();
 
       sound.onended = function () {
-        // After the button sound has finished, play the positive feedback sounds
-        const englishSound = new Audio(correctSoundToPlay[1]); // English sound (e.g., "Good")
-        const arabicSound = new Audio(correctSoundToPlay[2]); // Arabic sound (e.g., "احسنت")
+        //  play the positive feedback sounds
+        const englishSound = new Audio(correctSoundToPlay[1]); 
+        const arabicSound = new Audio(correctSoundToPlay[2]); 
 
         englishSound.play();
         englishSound.onended = function () {
@@ -421,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Delay the redirect until after the animation
                 setTimeout(() => {
                   showSection("page-3"); // Redirect after animation completes
-                }, 1500); // Adjust the delay as needed to match the animation duration
+                }, 1500);
               }, 100);
             }
           };
@@ -437,15 +420,15 @@ document.addEventListener("DOMContentLoaded", function () {
       sound.play();
 
       sound.onended = function () {
-        // After the text content sound finishes, play "Try Again" sound
-        const tryAgainSound = new Audio(correctSoundToPlay[1]); // "Try Again" sound
+        // play "Try Again" sound
+        const tryAgainSound = new Audio(correctSoundToPlay[1]); 
         tryAgainSound.play();
 
         tryAgainSound.onended = function () {
           // After "Try Again" sound finishes, play the Arabic phrase "حاول مرة اخرى"
           const arabicTryAgainSound = new Audio(
-            "./voices/خطأ حاول مرة اخرى.mp3"
-          ); // Path to the "حاول مرة اخرى" sound
+            "./voices/arabic_try_again.mp3"
+          ); 
           arabicTryAgainSound.play();
           arabicTryAgainSound.onended = function () {
             // Play "What are you doing?" question sound twice after the wrong answer feedback
@@ -472,7 +455,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function playAudioSequence() {
     // Play English audio
-    englishdragaudio.muted = false; // إلغاء كتم الصوت
+    englishdragaudio.muted = false; 
     englishdragaudio
       .play()
       .then(() => {
@@ -484,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Play Arabic audio after English audio ends
     englishdragaudio.onended = function () {
-      arbicdragaudio.muted = false; // إلغاء كتم الصوت
+      arbicdragaudio.muted = false; 
       arbicdragaudio
         .play()
         .then(() => {
@@ -505,9 +488,7 @@ function allowDrop(event) {
 // ****************************************************************************
 
 function drag(event) {
-  console.log("Dragging:", event.target.id); // تحقق من أن دالة drag تعمل
   event.dataTransfer.setData("text", event.target.id);
-  // Remove the playDragAudio call to prevent audio on drag
 }
 // ****************************************************************************
 
@@ -519,32 +500,30 @@ function drop(event) {
   // Check if the dragged element is the correct answer
   if (isCorrectAnswer(draggedElement.id, event.target.id)) {
     event.target.appendChild(draggedElement); // Add dragged element to the target
-    event.target.style.backgroundColor = "lightgreen"; // Change background color to light green
+    event.target.style.backgroundColor = "lightgreen"; 
     event.target.style.pointerEvents = "none"; // Make the box unclickable
-    event.target.style.textAlign = "center"; // Center text
-    // event.target.style.fontSize = "20px"; // Change font size as needed
-    event.target.style.color = "white"; // Change font color as needed
-    event.target.classList.add("word"); // إضافة الفئة لتطبيق أنماط CSS
+    event.target.style.textAlign = "center"; 
+    event.target.style.color = "white";
+    event.target.classList.add("word"); 
 
     playCorrectAnswerSounds(draggedElement.id); // Play correct answer sounds
 
-    updateScoreForPage3(true); // Use the updated score function for page 3
-    correctAnswersCount++; // زيادة عدد الإجابات الصحيحة
+    updateScoreForPage3(true);
+    correctAnswersCount++; 
 
     // Check if all answers are correct
     if (correctAnswersCount === totalAnswers) {
       // Redirect to the new page
-
       playAnimationBeforeRedirect();
     }
   } else {
     playIncorrectAnswerSounds(); // Play incorrect answer sounds
-    updateScoreForPage3(false); // Use the updated score function for page 3
+    updateScoreForPage3(false); 
   }
 }
 
 // ****************************************************************************
-let correctAnswersCount = 0; // متغير لتتبع عدد الإجابات الصحيحة
+let correctAnswersCount = 0; 
 const totalAnswers = 3; // إجمالي عدد الكلمات/الإجابات المطلوبة
 
 function showSectionfour(id) {
@@ -552,14 +531,14 @@ function showSectionfour(id) {
   var sections = document.querySelectorAll(".section");
   sections.forEach(function (section) {
     section.classList.remove("active");
-    section.style.display = "none"; // إخفاء الأقسام
+    section.style.display = "none"; 
   });
 
   // عرض القسم الذي يحتوي على الـ id المطابق
   var activeSection = document.getElementById(id);
   if (activeSection) {
     activeSection.classList.add("active");
-    activeSection.style.display = "block"; // عرض القسم النشط
+    activeSection.style.display = "block"; 
   }
 }
 
@@ -567,24 +546,20 @@ function playAnimationBeforeRedirect() {
   const frame1 = document.querySelector(".frame1");
   const frame2 = document.querySelector(".frame2");
 
-  // إزالة الأنيميشن القديم إذا كان موجودًا
   frame1.classList.remove("animate-frame");
   frame2.classList.remove("animate-frame");
 
-  // تشغيل الأنيميشن بعد فترة قصيرة
   setTimeout(() => {
     frame1.classList.add("animate-frame");
     frame2.classList.add("animate-frame");
 
-    // الانتقال إلى page-4 بعد انتهاء الأنيميشن
     setTimeout(() => {
-      showSectionfour("page-4"); // الانتقال إلى الصفحة الجديدة بعد الأنيميشن
+      showSectionfour("page-4"); 
       displayTotalScore();
-    }, 1300); // المدة التي يحتاجها الأنيميشن (يمكن تعديلها حسب مدة الأنيميشن)
-  }, 10000); // تأخير بسيط قبل بدء الأنيميشن
+    }, 1300); 
+  }, 10000);
 }
 
-// دالة للانتقال إلى page-4 مع تشغيل الأنيميشن
 function showPage4WithAnimation() {
   playAnimationBeforeRedirect();
 }
@@ -600,39 +575,38 @@ function playSoundsWithConfetti(soundsArray) {
     // Play the clapping sound and show confetti together twice
     if (index === soundsArray.length - 1) {
       audio.onplay = function () {
-        console.log("Playing clapping sound"); // سجل عند تشغيل الصوت
+        console.log("Playing clapping sound");
         showConfetti(); // Show confetti when clapping sound starts
 
         // Show confetti again after 1.5 seconds
         setTimeout(() => {
-          console.log("Showing confetti again"); // سجل عند عرض الكونفيتي مرة أخرى
           showConfetti();
         }, 1500);
       };
     }
 
     setTimeout(() => {
-      console.log(`Playing sound: ${src}`); // سجل الصوت الذي يتم تشغيله
+      console.log(`Playing sound: ${src}`); 
       audio.play();
     }, delay);
 
-    delay += 2000; // Add delay between sound plays (adjust if necessary)
+    delay += 2000; // Add delay between sound plays
   });
 }
 
 function showConfetti() {
   const confettiThree = document.getElementById("confetti-3");
   if (confettiThree) {
-    console.log("Showing confetti"); // سجل عند إظهار الكونفيتي
-    confettiThree.style.display = "block"; // إظهار الكونفيتي
+    console.log("Showing confetti");
+    confettiThree.style.display = "block"; 
 
     // إخفاء الكونفيتي بعد ثانيتين
     setTimeout(() => {
-      console.log("Hiding confetti"); // سجل عند إخفاء الكونفيتي
+      console.log("Hiding confetti"); 
       confettiThree.style.display = "none";
     }, 2000);
   } else {
-    console.error("Confetti element not found!"); // سجل خطأ إذا لم يتم العثور على العنصر
+    console.error("Confetti element not found!"); 
   }
 }
 
@@ -642,7 +616,7 @@ function showConfetti() {
 function isCorrectAnswer(draggedId, targetId) {
   const correctAnswers = {
     "word-1": "answer-3", // Example: "speaking" is correct for "answer-3"
-    "word-2": "answer-1", // Other mappings
+    "word-2": "answer-1", 
     "word-3": "answer-2",
   };
 
@@ -655,21 +629,21 @@ function playCorrectAnswerSounds(draggedId) {
   const correctSounds = {
     "word-1": [
       "./voices/speaking.mp3",
-      "./voices/good.mp3", // Good sound
-      "./voices/أحسنت.mp3", // احسنت sound
-      "./voices/Happy Kids Sound Effect.mp3", // Clapping sound
+      "./voices/good.mp3", 
+      "./voices/arabic_good.mp3", 
+      "./voices/happy_Kids_Sound_Effect.mp3", 
     ],
     "word-2": [
       "./voices/ring.mp3",
-      "./voices/Excellent.mp3", // Brilliant sound
-      "./voices/ممتاز.mp3", // ممتاز sound
-      "./voices/Happy Kids Sound Effect.mp3", // Clapping sound
+      "./voices/Excellent.mp3",
+      "./voices/arabic_excllent.mp3", 
+      "./voices/happy_Kids_Sound_Effect.mp3", 
     ],
     "word-3": [
       "./voices/wing.mp3",
-      "./voices/brillient.mp3", // Excellent sound
-      "./voices/مذهل.mp3", // مذهل sound
-      "./voices/Happy Kids Sound Effect.mp3", // Clapping sound
+      "./voices/brillient.mp3", 
+      "./voices/arabic-brillient.mp3", 
+      "./voices/happy_Kids_Sound_Effect.mp3", 
     ],
   };
 
@@ -681,9 +655,9 @@ function playCorrectAnswerSounds(draggedId) {
 // Function to play incorrect answer sounds
 function playIncorrectAnswerSounds() {
   const incorrectSounds = [
-    "./voices/wrong, try again.mp3", // Try again sound
-    "./voices/خطأ حاول مرة اخرى.mp3",
-    "./voices/drag the correct word.mp3", // حاول مرة اخرى sound
+    "./voices/wrong_try_again.mp3", 
+    "./voices/arabic_try_again.mp3",
+    "./voices/drag_the_correct_word.mp3", 
   ];
 
   playSounds(incorrectSounds);
@@ -730,60 +704,47 @@ function updateScoreForPage3(isCorrect) {
   scoreView.textContent = currentScore; // تحديث عرض الدرجات
   localStorage.setItem("page3Score", currentScore); // تخزين سكور page-3
 }
-// دالة لتصفير سكور page-3 عند إعادة اللعب
 function resetPage3Score() {
   localStorage.setItem("page3Score", 0); // تصفير سكور page-3 في localStorage
   document.getElementById("score-view").textContent = 0; // تصفير عرض السكور على الصفحة
 }
 
-// دالة حساب التوتال سكور وعرضه
 function displayTotalScore() {
   const totalScoreDisplay = document.getElementById("total-score");
 
   // استرجاع السكور المخزن من الصفحات
-  const page1Score = parseInt(localStorage.getItem("page1Score")) || 0; // سكور page-1
-  const page3Score = parseInt(localStorage.getItem("page3Score")) || 0; // سكور page-3
+  const page1Score = parseInt(localStorage.getItem("page1Score")) || 0; 
+  const page3Score = parseInt(localStorage.getItem("page3Score")) || 0; 
 
-  // جمع السكور من الصفحتين
   const totalScore = page1Score + page3Score;
-
-  // عرض التوتال سكور في الصفحة
   totalScoreDisplay.textContent = totalScore;
-
-  // تخزين التوتال سكور إذا كنت بحاجة لذلك
   localStorage.setItem("totalScore", totalScore);
 }
 
-// دالة لتصفير السكور عند إعادة اللعب
 function resetAllScores() {
-  localStorage.setItem("page1Score", 0); // تصفير سكور page-1
-  localStorage.setItem("page3Score", 0); // تصفير سكور page-3
-  localStorage.setItem("totalScore", 0); // تصفير التوتال سكور
+  localStorage.setItem("page1Score", 0); 
+  localStorage.setItem("page3Score", 0); 
+  localStorage.setItem("totalScore", 0); 
   document.getElementById("score-view").textContent = 0; // تصفير عرض السكور في الصفحة
   document.getElementById("total-score").textContent = 0; // تصفير عرض التوتال سكور
 }
 
-// تنفيذ الدوال عند تحميل الصفحة
 window.onload = function () {
   // إخفاء overlay عند تحميل الصفحة
   document.getElementById("startOverlay").style.display = "none";
-
-  // استرجاع درجة الصفحة 3 عند التحميل
   const storedScore = localStorage.getItem("page3Score") || 0;
   document.getElementById("score-view").textContent = storedScore;
-
   console.log("Loaded Score from localStorage:", storedScore);
 
-  // حساب وعرض التوتال سكور
   displayTotalScore();
   resetAllScores();
 };
 // Function to reset the game state
 function resetGame() {
   // Clear all boxes and return words to their original positions
-  const answerBoxes = document.querySelectorAll(".answer"); // تأكد من اختيار العناصر الصحيحة
-  const words = document.querySelectorAll(".word"); // تأكد من اختيار العناصر الصحيحة
-  const originalContainer = document.querySelector(".answer-text"); // تحديد الحاوية الأصلية للكلمات
+  const answerBoxes = document.querySelectorAll(".answer"); 
+  const words = document.querySelectorAll(".word"); 
+  const originalContainer = document.querySelector(".answer-text"); 
 
   answerBoxes.forEach((box) => {
     box.innerHTML = ""; // Clear the box content
@@ -791,7 +752,6 @@ function resetGame() {
     box.style.pointerEvents = ""; // Reset pointer events
   });
 
-  // Append each word back to its original container
   words.forEach((word) => {
     originalContainer.appendChild(word); // إعادة الكلمات إلى الحاوية الأصلية
   });
@@ -800,5 +760,5 @@ function resetGame() {
   resetAllScores();
   setTimeout(() => {
     showPage4WithAnimation(); // الانتقال إلى صفحة الخروج بعد فترة قصيرة
-  }, 130000); // يمكنك تعديل هذه الفترة حسب الحاجة
+  }, 130000);
 }
